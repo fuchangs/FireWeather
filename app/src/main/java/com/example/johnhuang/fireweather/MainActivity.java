@@ -2,6 +2,7 @@ package com.example.johnhuang.fireweather;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Firebase mRef;
     ImageView imageView;
     File localfile;
+    final long ONE_MEGABYTE = 1024 * 1024;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,20 +80,42 @@ public class MainActivity extends AppCompatActivity {
         // spaceRef now points to "users/me/profile.png
         // imagesRef still points to "images"
         StorageReference spaceRef = storageRef.child("opd1f_2.jpg");
-        try{
-            localfile =File.createTempFile("tmp","jpg");
-            spaceRef.getFile(localfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    imageView=(ImageView) findViewById(R.id.imageView);
-                    Bitmap myBitmap = BitmapFactory.decodeFile(localfile.getPath());
-                    imageView.setImageBitmap(myBitmap);
-                }
-            });
-        }catch (IOException e){
-            e.printStackTrace();
-        }
 
+//        try{
+//            localfile =File.createTempFile("images","jpg");
+//            spaceRef.getFile(localfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+//                    // Local temp file has been created
+//                    imageView=(ImageView) findViewById(R.id.imageView);
+//                    Bitmap myBitmap = BitmapFactory.decodeFile(localfile.getPath());
+//                    imageView.setImageBitmap(myBitmap);
+//                }
+//            }).addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception e) {
+//                    // Handle any errors
+//
+//                }
+//            });
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+
+        spaceRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                // Use the bytes to display the image
+                imageView=(ImageView) findViewById(R.id.imageView);
+                Bitmap bMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                imageView.setImageBitmap(bMap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Handle any errors
+            }
+        });
 
 
 

@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "1077319048672",
+    "firebase_url": "https://fire-weather-6d65b.firebaseio.com",
+    "project_id": "fire-weather-6d65b",
+    "storage_bucket": "fire-weather-6d65b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077319048672:android:0f2fa1d8248422ec",
+        "android_client_info": {
+          "package_name": "tw.edu.ncku.hosp.firebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077319048672-uni6q9nm1hb5l4j92rkmur72qns46sf3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD60874oMedyaNZid4jDp2XiQNN939bKpI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077319048672:android:9dbcb6bba92d46bd",
+        "android_client_info": {
+          "package_name": "com.example.johnhuang.fireweather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077319048672-iobs81557ef7gqkgquh5mb23i2rcmpoc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.johnhuang.fireweather",
+            "certificate_hash": "601A903712D10E74A44361B9DA3597FC0B68CE85"
+          }
+        },
+        {
+          "client_id": "1077319048672-uni6q9nm1hb5l4j92rkmur72qns46sf3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD60874oMedyaNZid4jDp2XiQNN939bKpI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077319048672-uni6q9nm1hb5l4j92rkmur72qns46sf3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
